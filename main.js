@@ -1,7 +1,7 @@
 class Game {
   constructor() {
     this.container = document.getElementById("game-container");
-    this.puntosElement = document.getElementById("puntos");
+    /*this.puntosElement = document.getElementById("puntos");*/
     this.personaje = null;
     this.monedas = [];
     this.puntuacion = 0;
@@ -35,16 +35,16 @@ class Game {
           // Eliminar moneda y actualizar puntuación
           this.container.removeChild(moneda.element);
           this.monedas.splice(index, 1);
-          this.actualizarPuntuacion(10); // Cada moneda vale 10 puntos
+          //this.actualizarPuntuacion(10);
         }
       });
     }, 100);
   }
 
-  actualizarPuntuacion(puntos) {
+  /*actualizarPuntuacion(puntos) {
     this.puntuacion += puntos;
     this.puntosElement.textContent = `Puntos: ${this.puntuacion}`;
-  }
+  }*/
 }
 
 class Personaje {
@@ -57,36 +57,26 @@ class Personaje {
     this.saltando = false;
 
     this.element = document.createElement("div");
-    this.element.style.position = "absolute";
-    this.element.style.left = `${this.x}px`;
-    this.element.style.top = `${this.y}px`;
-    this.element.style.width = `${this.width}px`;
-    this.element.style.height = `${this.height}px`;
-    this.element.style.backgroundColor = "#07a07c";
-    this.element.style.borderRadius = "50%";
-    this.element.style.border = "5px solid #07a050";
+    this.element.classList.add("personaje");
+
+    this.actualizarPosicion();
   }
 
   mover(evento) {
-    switch (evento.key) {
-      case "ArrowRight":
-        this.x += this.velocidad;
-        break;
-      case "ArrowLeft":
-        this.x -= this.velocidad;
-        break;
-      case "ArrowUp":
-        if (!this.saltando) {
-          this.saltar();
-        }
-        break;
+    if (evento.key === "ArrowRight") {
+      this.x += this.velocidad;
+    } else if (evento.key === "ArrowLeft") {
+      this.x -= this.velocidad;
+    } else if (evento.key === "ArrowUp") {
+      this.saltar();
     }
+
     this.actualizarPosicion();
   }
 
   saltar() {
     this.saltando = true;
-    let alturaMaxima = this.y - 300;
+    let alturaMaxima = this.y - 100;
 
     const salto = setInterval(() => {
       if (this.y > alturaMaxima) {
