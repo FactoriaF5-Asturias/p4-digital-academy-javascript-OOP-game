@@ -1,7 +1,7 @@
 class Game {
   constructor() {
     this.container = document.getElementById("game-container");
-    /*this.puntosElement = document.getElementById("puntos");*/
+    this.puntosElement = document.getElementById("puntos");
     this.personaje = null;
     this.monedas = [];
     this.puntuacion = 0;
@@ -32,23 +32,23 @@ class Game {
         if (this.personaje.colisionaCon(moneda)) {
           this.container.removeChild(moneda.element);
           this.monedas.splice(index, 1);
-          //this.actualizarPuntuacion(10);
+          this.actualizarPuntuacion(10);
         }
       });
     }, 100);
   }
 
-  /*actualizarPuntuacion(puntos) {
+  actualizarPuntuacion(puntos) {
     this.puntuacion += puntos;
     this.puntosElement.textContent = `Puntos: ${this.puntuacion}`;
-  }*/
+  }
 }
 
 class Personaje {
   constructor() {
     this.x = 50;
     this.y = 300;
-    this.width = 50; // Se agrega tamaño del personaje
+    this.width = 50;
     this.height = 50;
     this.velocidad = 10;
     this.saltando = false;
@@ -64,9 +64,7 @@ class Personaje {
       this.x += this.velocidad;
     } else if (evento.key === "ArrowLeft") {
       this.x -= this.velocidad;
-    } else if (evento.key === "ArrowUp") {
-      //para evitar el doble salto sería así:
-      //else if (evento.key === "ArrowUp" && !this.saltando)
+    } else if (evento.key === "ArrowUp" && !this.saltando) {
       this.saltar();
     }
 
@@ -75,11 +73,11 @@ class Personaje {
 
   saltar() {
     this.saltando = true;
-    let alturaMaxima = this.y - 100;
+    let alturaMaxima = this.y - 250;
 
     const salto = setInterval(() => {
       if (this.y > alturaMaxima) {
-        this.y -= 100;
+        this.y -= 20;
       } else {
         clearInterval(salto);
         this.caer();
@@ -94,6 +92,7 @@ class Personaje {
         this.y += 10;
       } else {
         clearInterval(gravedad);
+        this.saltando = false;
       }
       this.actualizarPosicion();
     }, 20);
@@ -121,7 +120,7 @@ class Moneda {
     this.width = 30;
     this.height = 30;
     this.element = document.createElement("div");
-    this.element.classList.add("moneda"); // Agregar clase CSS
+    this.element.classList.add("moneda");
 
     this.actualizarPosicion();
   }
