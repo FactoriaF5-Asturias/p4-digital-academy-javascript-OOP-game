@@ -11,11 +11,9 @@ class Game {
   }
 
   crearEscenario() {
-    // Crear el personaje
     this.personaje = new Personaje();
     this.container.appendChild(this.personaje.element);
 
-    // Generar monedas
     for (let i = 0; i < 5; i++) {
       const moneda = new Moneda();
       this.monedas.push(moneda);
@@ -32,7 +30,6 @@ class Game {
     setInterval(() => {
       this.monedas.forEach((moneda, index) => {
         if (this.personaje.colisionaCon(moneda)) {
-          // Eliminar moneda y actualizar puntuación
           this.container.removeChild(moneda.element);
           this.monedas.splice(index, 1);
           //this.actualizarPuntuacion(10);
@@ -51,7 +48,7 @@ class Personaje {
   constructor() {
     this.x = 50;
     this.y = 300;
-    this.width = 50;
+    this.width = 50; // Se agrega tamaño del personaje
     this.height = 50;
     this.velocidad = 10;
     this.saltando = false;
@@ -68,6 +65,8 @@ class Personaje {
     } else if (evento.key === "ArrowLeft") {
       this.x -= this.velocidad;
     } else if (evento.key === "ArrowUp") {
+      //para evitar el doble salto sería así:
+      //else if (evento.key === "ArrowUp" && !this.saltando)
       this.saltar();
     }
 
@@ -80,7 +79,7 @@ class Personaje {
 
     const salto = setInterval(() => {
       if (this.y > alturaMaxima) {
-        this.y -= 5;
+        this.y -= 100;
       } else {
         clearInterval(salto);
         this.caer();
@@ -92,10 +91,9 @@ class Personaje {
   caer() {
     const gravedad = setInterval(() => {
       if (this.y < 300) {
-        this.y += 5;
+        this.y += 10;
       } else {
         clearInterval(gravedad);
-        this.saltando = false;
       }
       this.actualizarPosicion();
     }, 20);
@@ -122,16 +120,15 @@ class Moneda {
     this.y = Math.random() * 250 + 50;
     this.width = 30;
     this.height = 30;
-
     this.element = document.createElement("div");
-    this.element.style.position = "absolute";
+    this.element.classList.add("moneda"); // Agregar clase CSS
+
+    this.actualizarPosicion();
+  }
+
+  actualizarPosicion() {
     this.element.style.left = `${this.x}px`;
     this.element.style.top = `${this.y}px`;
-    this.element.style.width = `${this.width}px`;
-    this.element.style.height = `${this.height}px`;
-    this.element.style.backgroundColor = "gold";
-    this.element.style.borderRadius = "50%";
-    this.element.style.boxShadow = "0 0 10px 2px rgba(255, 223, 0, 0.8)";
   }
 }
 
