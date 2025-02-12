@@ -358,34 +358,6 @@ colisionaCon(objeto) {
 }
 ```
 
-- Detección de colisiones rectangular\*
-  Si **todos los chequeos son true**, significa que las áreas del personaje y la moneda **se han intersectado**, lo que indica una **colisión**
-  1. **this.x < moneda.x + moneda.width**:
-     • **this.x** es la posición **horizontal** del personaje.
-     • **moneda.x + moneda.width** es la **posición final** de la moneda en el eje X (es decir, el lado derecho de la moneda).
-     • Este primer chequeo asegura que el personaje no esté **a la derecha** de la moneda, es decir, que la parte izquierda del personaje (su coordenada x) esté antes de la parte derecha de la moneda. Si esto es cierto, significa que el personaje está dentro del área horizontal de la moneda.
-  2. **this.x + this.width > moneda.x**:
-     • **this.x + this.width** es la **posición final** del personaje en el eje X (es decir, el lado derecho del personaje).
-     • **moneda.x** es la **posición inicial** de la moneda en el eje X (el lado izquierdo de la moneda).
-     • Este chequeo verifica que el lado derecho del personaje esté **después** del lado izquierdo de la moneda. Si es cierto, significa que el personaje está dentro del área horizontal de la moneda, y no a la izquierda de ella.
-  3. **this.y < moneda.y + moneda.height**:
-     • **this.y** es la **posición vertical** del personaje.
-     • **moneda.y + moneda.height** es la **posición final** de la moneda en el eje Y (el borde inferior de la moneda).
-     • Este chequeo asegura que la parte superior del personaje esté **por encima o dentro** de la parte inferior de la moneda, es decir, que no esté debajo de la moneda.
-  4. **this.y + this.height > moneda.y**:
-     • **this.y + this.height** es la **posición final** del personaje en el eje Y (el borde inferior del personaje).
-     • **moneda.y** es la **posición inicial** de la moneda en el eje Y (el borde superior de la moneda).
-     • Este último chequeo verifica que la parte inferior del personaje esté **por debajo o dentro** de la parte superior de la moneda, es decir, que no esté por encima de la moneda.
-     **¿Qué hace todo esto?**
-     • Estos cuatro chequeos juntos aseguran que el personaje y la moneda **se superpongan en ambas direcciones**, horizontal y verticalmente.
-     Este método es comúnmente conocido como **detección de colisiones rectangular**, porque se asume que los objetos involucrados tienen una forma rectangular. Si se cumple esta condición, entonces el personaje está tocando la moneda o de alguna manera se está “intersectando” con ella.
-     **Resumen:**
-     • **this.x < moneda.x + moneda.width**: Comprobar si el personaje está a la izquierda de la moneda.
-     • **this.x + this.width > moneda.x**: Comprobar si el personaje está a la derecha de la moneda.
-     • **this.y < moneda.y + moneda.height**: Comprobar si el personaje está por encima de la moneda.
-     • **this.y + this.height > moneda.y**: Comprobar si el personaje está por debajo de la moneda.
-     Si todas estas condiciones son verdaderas, entonces hay una colisión entre el personaje y la moneda. 🎮
-
 ## 3. Clase `Moneda` 🪙
 
 Por último crearemos las monedas del juego.
