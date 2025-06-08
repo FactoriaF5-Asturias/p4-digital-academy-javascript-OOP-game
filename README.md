@@ -1,4 +1,4 @@
-# Juego POO 🧨
+# Juego Programación Orientada a Objetos 🧨
 
 La **Programación Orientada a Objetos (POO)** es un **paradigma\* de programación** que organiza el código en torno a **objetos**, los cuales representan entidades del mundo real con **propiedades** (atributos) y **comportamientos** (métodos).
 
