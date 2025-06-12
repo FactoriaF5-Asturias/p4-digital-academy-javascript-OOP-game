@@ -29,6 +29,13 @@ body {
   border: 5px solid #07a050;
 }
 
+#playerImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  image-rendering: pixelate;
+}
+
 .moneda {
   position: absolute;
   width: 30px;

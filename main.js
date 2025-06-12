@@ -56,6 +56,14 @@ class Personaje {
     this.element = document.createElement("div");
     this.element.classList.add("personaje");
 
+    // gML: Create the <img> element for the character image
+    this.characterImg = document.createElement("img");
+    this.characterImg.src = "./img/redHatBoy.png";
+    this.characterImg.alt = "Player red hat boy";
+    this.characterImg.id = "playerImage";
+    // Attach the <img> element to the character's <div>
+    this.element.appendChild(this.characterImg);
+
     this.actualizarPosicion();
   }
 
