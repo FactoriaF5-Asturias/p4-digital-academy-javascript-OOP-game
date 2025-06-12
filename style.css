@@ -44,14 +44,15 @@ body {
   margin: 10px 0;
 }
 
-/* Tablet: Portrait and Landscape */
+/* Tablet: Portrait and Landscape (From 1023px to 768px) */
 /* https://css-tricks.com/snippets/css/media-queries-for-standard-devices/ */
 @media only screen
   and (min-device-width: 768px)
-  and (max-device-width: 1024px)
-  and (-webkit-min-device-pixel-ratio: 1) {
+  and (max-device-width: 1023px)
+  and (-webkit-min-device-pixel-ratio: 1) { /*TODO: find more info about this!*/
     #game-container {
+      border: 8px double #FBBC05;
       width: 750px;
-      border: 8px dashed #4285F4;
     }
-  }
+}
+
