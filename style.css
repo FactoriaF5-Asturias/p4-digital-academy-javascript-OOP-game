@@ -56,3 +56,18 @@ body {
     }
 }
 
+/* Mobile: Portrait and Landscape (From 767px to 320px) */
+/* Make two media query.
+/* https://drive.google.com/file/d/17SoOTQRBQn3MJ0ilrmAkaR2tvdxX-Sot/view?usp=sharing */
+
+/* Mobile 1o2 @media (From 767px to 520px) */
+@media only screen
+  and (min-device-width: 520px)
+  and (max-device-width: 767px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+    #game-container{
+      border: 6px double #4285F4;
+      width: 500px;
+    }
+}
+
