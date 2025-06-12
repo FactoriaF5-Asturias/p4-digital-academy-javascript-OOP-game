@@ -71,3 +71,15 @@ body {
     }
 }
 
+/* Mobile 2o2 @media (From 519px to 320px) */
+@media only screen
+  and (min-device-width: 320px)
+  and (max-device-width: 519px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+    #game-container{
+      border: 6px double #EA4335;
+      width: 300px;
+    }
+}
+
+/* TODO: TO_DEL. r: "#EA4335;" b: "#4285F4;" y: "#FBBC05;" g: "#34A853;" */
