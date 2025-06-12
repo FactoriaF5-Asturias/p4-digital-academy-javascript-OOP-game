@@ -11,6 +11,14 @@ class Game {
   }
 
   crearEscenario() {
+    // Create the <img> element for the background image
+    const backgroundImg = document.createElement("img");
+    backgroundImg.src = "./img/background-forest.png";
+    backgroundImg.alt = "Background image";
+    backgroundImg.id = "backgroundImg";
+
+    this.container.appendChild(backgroundImg);
+
     this.personaje = new Personaje();
     this.container.appendChild(this.personaje.element);
 
