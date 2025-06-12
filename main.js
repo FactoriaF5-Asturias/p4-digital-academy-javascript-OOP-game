@@ -54,7 +54,7 @@ class Personaje {
     this.saltando = false;
 
     this.element = document.createElement("div");
-    this.element.classList.add("personaje");
+    this.element.classList.add("playerContainer");
 
     // gML: Create the <img> element for the character image
     this.characterImg = document.createElement("img");
