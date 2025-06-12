@@ -60,9 +60,9 @@ class Personaje {
   }
 
   mover(evento) {
-    if (evento.key === "ArrowRight") {
-      this.x += this.velocidad;
-    } else if (evento.key === "ArrowLeft") {
+    if (evento.key === "ArrowRight" && this.x <= 730) { // SCRUM 2 (Laptop 1560px)
+      this.x += this.velocidad;                           // HARDCODE!!! ;-()
+    } else if (evento.key === "ArrowLeft" && this.x >= 10) {// SCRUM 2 (Laptop 1560px)
       this.x -= this.velocidad;
     } else if (evento.key === "ArrowUp" && !this.saltando) {
       this.saltar();
