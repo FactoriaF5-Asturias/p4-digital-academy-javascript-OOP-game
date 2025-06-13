@@ -11,10 +11,10 @@ body {
 }
 #game-container {
   position: relative;
-  width: 800px;
+  width: 1200px;
   height: 400px;
   margin: 20px auto;
-  border: 10px solid #6d6d6d;
+  border: 10px double #34A853;
   background: #fff;
   overflow: hidden;
   border-radius: 30px;
