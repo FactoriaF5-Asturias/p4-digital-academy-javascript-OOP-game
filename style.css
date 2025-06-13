@@ -47,17 +47,22 @@ body {
 }
 
 .moneda {
+  /* background-color: gold; */ /* For testing purposes only! */
   position: absolute;
   width: 35px;
   height: 35px;
-  /* background-color: gold; */
   border-radius: 50%;
   box-shadow: 0 0 10px 2px rgba(255, 223, 0, 0.8);
+  /* To center the image */
+  display:flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #star {
   width: 100%;
   height: 100%;
+  object-fit: contain;
 }
 
 #puntos {
