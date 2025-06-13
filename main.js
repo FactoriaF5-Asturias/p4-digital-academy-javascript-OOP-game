@@ -3,7 +3,7 @@ class Game {
     this.container = document.getElementById("game-container");
     this.puntosElement = document.getElementById("puntos");
     this.personaje = null;
-    this.monedas = [];
+    this.stars = [];
     this.puntuacion = 0;
 
     this.crearEscenario();
@@ -23,9 +23,9 @@ class Game {
     this.container.appendChild(this.personaje.element);
 
     for (let i = 0; i < 5; i++) {
-      const moneda = new Moneda();
-      this.monedas.push(moneda);
-      this.container.appendChild(moneda.element);
+      const star = new Star();
+      this.stars.push(star);
+      this.container.appendChild(star.element);
     }
   }
 
@@ -36,10 +36,10 @@ class Game {
 
   checkColisiones() {
     setInterval(() => {
-      this.monedas.forEach((moneda, index) => {
-        if (this.personaje.colisionaCon(moneda)) {
-          this.container.removeChild(moneda.element);
-          this.monedas.splice(index, 1);
+      this.stars.forEach((star, index) => {
+        if (this.personaje.colisionaCon(star)) {
+          this.container.removeChild(star.element);
+          this.stars.splice(index, 1);
           this.actualizarPuntuacion(10);
         }
       });
@@ -129,14 +129,14 @@ class Personaje {
   }
 }
 
-class Moneda {
+class Star {
   constructor() {
     this.x = Math.random() * 700 + 50;
     this.y = Math.random() * 250 + 50;
     this.width = 30;
     this.height = 30;
     this.element = document.createElement("div");
-    this.element.classList.add("moneda");
+    this.element.classList.add("starContainer");
 
     // Create the <img> element for the star image
     const starImg = document.createElement("img");

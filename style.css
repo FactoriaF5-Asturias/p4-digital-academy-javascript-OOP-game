@@ -46,7 +46,7 @@ body {
   image-rendering: pixelate;
 }
 
-.moneda {
+.starContainer {
   /* background-color: gold; */ /* For testing purposes only! */
   position: absolute;
   width: 35px;
