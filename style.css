@@ -11,31 +11,58 @@ body {
 }
 #game-container {
   position: relative;
-  width: 800px;
+  width: 1200px;
   height: 400px;
   margin: 20px auto;
-  border: 10px solid #6d6d6d;
+  border: 10px double #34A853;
   background: #fff;
   overflow: hidden;
   border-radius: 30px;
 }
 
-.personaje {
-  position: absolute;
-  width: 50px;
-  height: 50px;
-  background-color: #07a07c;
-  border-radius: 50%;
-  border: 5px solid #07a050;
+#backgroundImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
 }
 
-.moneda {
+.playerContainer {
+  /* background-color: #07a07c;  *//* For testing purposes only! */
   position: absolute;
-  width: 30px;
-  height: 30px;
-  background-color: gold;
+  width: 100px;
+  height: 100px;
+  /*Center the image*/
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+}
+
+#playerImage {
+  /* border: 1px solid black; */ /* For testing purposes only! */
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  image-rendering: pixelate;
+}
+
+.starContainer {
+  /* background-color: gold; */ /* For testing purposes only! */
+  position: absolute;
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
   box-shadow: 0 0 10px 2px rgba(255, 223, 0, 0.8);
+  /* To center the image */
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#star {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 #puntos {
@@ -43,3 +70,43 @@ body {
   text-align: center;
   margin: 10px 0;
 }
+
+/* Tablet: Portrait and Landscape (From 1023px to 768px) */
+/* https://css-tricks.com/snippets/css/media-queries-for-standard-devices/ */
+@media only screen
+  and (min-device-width: 768px)
+  and (max-device-width: 1023px)
+  and (-webkit-min-device-pixel-ratio: 1) { /*TODO: find more info about this!*/
+    #game-container {
+      border: 8px double #FBBC05;
+      width: 750px;
+    }
+}
+
+/* Mobile: Portrait and Landscape (From 767px to 320px) */
+/* Make two media query.
+/* https://drive.google.com/file/d/17SoOTQRBQn3MJ0ilrmAkaR2tvdxX-Sot/view?usp=sharing */
+
+/* Mobile 1o2 @media (From 767px to 520px) */
+@media only screen
+  and (min-device-width: 520px)
+  and (max-device-width: 767px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+    #game-container{
+      border: 6px double #4285F4;
+      width: 500px;
+    }
+}
+
+/* Mobile 2o2 @media (From 519px to 320px) */
+@media only screen
+  and (min-device-width: 320px)
+  and (max-device-width: 519px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+    #game-container{
+      border: 6px double #EA4335;
+      width: 300px;
+    }
+}
+
+/* TODO: TO_DEL. r: "#EA4335;" b: "#4285F4;" y: "#FBBC05;" g: "#34A853;" */

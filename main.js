@@ -3,7 +3,7 @@ class Game {
     this.container = document.getElementById("game-container");
     this.puntosElement = document.getElementById("puntos");
     this.personaje = null;
-    this.monedas = [];
+    this.stars = [];
     this.puntuacion = 0;
 
     this.crearEscenario();
@@ -11,13 +11,21 @@ class Game {
   }
 
   crearEscenario() {
+    // Create the <img> element for the background image
+    const backgroundImg = document.createElement("img");
+    backgroundImg.src = "./img/background-forest.png";
+    backgroundImg.alt = "Background image";
+    backgroundImg.id = "backgroundImg";
+
+    this.container.appendChild(backgroundImg);
+
     this.personaje = new Personaje();
     this.container.appendChild(this.personaje.element);
 
     for (let i = 0; i < 5; i++) {
-      const moneda = new Moneda();
-      this.monedas.push(moneda);
-      this.container.appendChild(moneda.element);
+      const star = new Star();
+      this.stars.push(star);
+      this.container.appendChild(star.element);
     }
   }
 
@@ -28,10 +36,10 @@ class Game {
 
   checkColisiones() {
     setInterval(() => {
-      this.monedas.forEach((moneda, index) => {
-        if (this.personaje.colisionaCon(moneda)) {
-          this.container.removeChild(moneda.element);
-          this.monedas.splice(index, 1);
+      this.stars.forEach((star, index) => {
+        if (this.personaje.colisionaCon(star)) {
+          this.container.removeChild(star.element);
+          this.stars.splice(index, 1);
           this.actualizarPuntuacion(10);
         }
       });
@@ -54,15 +62,23 @@ class Personaje {
     this.saltando = false;
 
     this.element = document.createElement("div");
-    this.element.classList.add("personaje");
+    this.element.classList.add("playerContainer");
+
+    // gML: Create the <img> element for the character image
+    this.characterImg = document.createElement("img");
+    this.characterImg.src = "./img/redHatBoy.png";
+    this.characterImg.alt = "Player red hat boy";
+    this.characterImg.id = "playerImage";
+    // Attach the <img> element to the character's <div>
+    this.element.appendChild(this.characterImg);
 
     this.actualizarPosicion();
   }
 
   mover(evento) {
-    if (evento.key === "ArrowRight") {
-      this.x += this.velocidad;
-    } else if (evento.key === "ArrowLeft") {
+    if (evento.key === "ArrowRight" && this.x <= 730) { // SCRUM 2 (Laptop 1560px)
+      this.x += this.velocidad;                           // HARDCODE!!! ;-()
+    } else if (evento.key === "ArrowLeft" && this.x >= 10) {// SCRUM 2 (Laptop 1560px)
       this.x -= this.velocidad;
     } else if (evento.key === "ArrowUp" && !this.saltando) {
       this.saltar();
@@ -113,14 +129,22 @@ class Personaje {
   }
 }
 
-class Moneda {
+class Star {
   constructor() {
     this.x = Math.random() * 700 + 50;
     this.y = Math.random() * 250 + 50;
     this.width = 30;
     this.height = 30;
     this.element = document.createElement("div");
-    this.element.classList.add("moneda");
+    this.element.classList.add("starContainer");
+
+    // Create the <img> element for the star image
+    const starImg = document.createElement("img");
+    starImg.src = "./img/smileStar.png";
+    starImg.alt = "Cute smile star";
+    starImg.id = "star";
+
+    this.element.appendChild(starImg);
 
     this.actualizarPosicion();
   }
