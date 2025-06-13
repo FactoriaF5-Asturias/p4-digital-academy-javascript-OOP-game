@@ -138,6 +138,14 @@ class Moneda {
     this.element = document.createElement("div");
     this.element.classList.add("moneda");
 
+    // Create the <img> element for the star image
+    const starImg = document.createElement("img");
+    starImg.src = "./img/smileStar.png";
+    starImg.alt = "Cute smile star";
+    starImg.id = "star";
+
+    this.element.appendChild(starImg);
+
     this.actualizarPosicion();
   }
 
